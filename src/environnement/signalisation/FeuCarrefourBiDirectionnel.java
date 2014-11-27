@@ -1,6 +1,5 @@
 package environnement.signalisation;
 
-import environnement.maillon.Maillon;
 import environnement.structure.carrefour.CarrefourBiDirectionnel;
 
 /**
@@ -16,7 +15,7 @@ import environnement.structure.carrefour.CarrefourBiDirectionnel;
  *                ↓       ↑
  */
 
-public class FeuCarrefourBiDirectionnel {
+public class FeuCarrefourBiDirectionnel implements IFeuCarrefour{
     private Feu feuSynchro1;
     private Feu feuSynchro2;
     private Feu feuOppose;
@@ -27,12 +26,14 @@ public class FeuCarrefourBiDirectionnel {
         feuOppose = new Feu(carrefour.getMaillonIntSortant(), dureeFeu, false);
     }
 
+    @Override
     public void startFeux() {
         feuSynchro1.start();
         feuSynchro2.start();
         feuOppose.start();
     }
-
+    
+    @Override
     public void stopFeux() throws InterruptedException {
         feuSynchro1.interrupt();
         feuSynchro2.interrupt();

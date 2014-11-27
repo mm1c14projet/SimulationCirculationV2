@@ -1,6 +1,5 @@
 package environnement.signalisation;
 
-import environnement.maillon.Maillon;
 import environnement.structure.carrefour.CarrefourTriDirectionnel;
 
 /**
@@ -16,7 +15,7 @@ import environnement.structure.carrefour.CarrefourTriDirectionnel;
  *            ↓      ↑
  *           rDS    rDE
  */
-public class FeuCarrefourTriDirectionnel {
+public class FeuCarrefourTriDirectionnel implements IFeuCarrefour {
     private Feu feuSynchro1;
     private Feu feuSynchro2;
     private Feu feuOppose1;
@@ -29,6 +28,7 @@ public class FeuCarrefourTriDirectionnel {
         feuOppose2 = new Feu(carrefour.getMaillonBasGauche(), dureeFeu, false);
     }
 
+    @Override
     public void startFeux() {
         feuSynchro1.start();
         feuSynchro2.start();
@@ -36,6 +36,7 @@ public class FeuCarrefourTriDirectionnel {
         feuOppose2.start();
     }
 
+    @Override
     public void stopFeux() throws InterruptedException {
         feuSynchro1.interrupt();
         feuSynchro2.interrupt();
