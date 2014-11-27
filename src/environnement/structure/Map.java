@@ -39,29 +39,39 @@ public class Map {
     private static int NB_CARREFOUR_UNIDIR = 4;
     private static int NB_CARREFOUR_BIDIR = 4;
     private static int NB_CARREFOUR_TRIDIR = 1;
-    private static int NB_FEUX_TROIESVOIES = 0;
+    private static int NB_FEUX_TROIESVOIES = 2;
     private static int NB_FEUX_QUATREVOIES = 1;
 
-    private Route[] r;
-    private CarrefourUniDirectionnel[] u;
-    private CarrefourBiDirectionnel[] b;
-    private CarrefourTriDirectionnel[] t;
+    private Route[] r = new Route[NB_ROUTES];;
+    private CarrefourUniDirectionnel[] u = new CarrefourUniDirectionnel[NB_CARREFOUR_UNIDIR];
+    private CarrefourBiDirectionnel[] b = new CarrefourBiDirectionnel[NB_CARREFOUR_BIDIR];
+    private CarrefourTriDirectionnel[] t = new CarrefourTriDirectionnel[NB_CARREFOUR_TRIDIR];
 
-    private FeuCarrefourBiDirectionnel[] fb;
-    private FeuCarrefourTriDirectionnel[] ft;
+    private FeuCarrefourBiDirectionnel[] fb = new FeuCarrefourBiDirectionnel[NB_FEUX_TROIESVOIES];
+    private FeuCarrefourTriDirectionnel[] ft = new FeuCarrefourTriDirectionnel[NB_FEUX_QUATREVOIES];
 
     public Map() {
-        r = new Route[NB_ROUTES];
-        u = new CarrefourUniDirectionnel[NB_CARREFOUR_UNIDIR];
-        b = new CarrefourBiDirectionnel[NB_CARREFOUR_BIDIR];
-        t = new CarrefourTriDirectionnel[NB_CARREFOUR_TRIDIR];
-        fb = new FeuCarrefourBiDirectionnel[NB_FEUX_TROIESVOIES];
-        ft = new FeuCarrefourTriDirectionnel[NB_FEUX_QUATREVOIES];
+
+        this.creationRoute();
+
+        this.creationCarrefour();
+
+        this.creationFeux();
+
+        this.startFeux();
+
+    }
+
+    public void creationRoute(){
 
         for (int i = 0; i < NB_ROUTES; i++) {
             r[i] = new Route(LONGUEUR_ROUTES, i);
         }
 
+    }
+
+    public void creationCarrefour()
+    {
         u[0] = new CarrefourUniDirectionnel(r[8], r[9], r[0], r[1], 0);
         u[1] = new CarrefourUniDirectionnel(r[14], r[15], r[2], r[3], 1);
         u[2] = new CarrefourUniDirectionnel(r[12], r[13], r[4], r[5], 2);
@@ -73,9 +83,15 @@ public class Map {
         b[3] = new CarrefourBiDirectionnel(r[7], r[0], r[9], r[10], r[17], r[16], false, 3);
 
         t[0] = new CarrefourTriDirectionnel(r[16], r[17], r[18], r[19], r[20], r[21], r[22], r[23],
-                                            true, 0);
+                true, 0);
+    }
 
+    public void creationFeux()
+    {
         ft[0] = new FeuCarrefourTriDirectionnel(t[0], 10000);
+
+        fb[0] = new FeuCarrefourBiDirectionnel(b[1], 10000);
+        fb[1] = new FeuCarrefourBiDirectionnel(b[2], 10000);
     }
 
     public Route getRoute(int n) {
@@ -112,7 +128,6 @@ public class Map {
         for (int i = 0; i < ft.length; i++) {
             ft[i].stopFeux();
         }
-
     }
 }
 

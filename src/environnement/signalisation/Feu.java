@@ -6,6 +6,7 @@ import environnement.maillon.Maillon;
  * Created by clément on 25/11/2014.
  */
 public class Feu extends Thread {
+
     private Maillon maillon;
     private int dureeFeu;
 

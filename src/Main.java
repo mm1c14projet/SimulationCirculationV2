@@ -8,12 +8,11 @@ import java.util.Scanner;
  */
 public class Main {
     public static void main(String[] args) throws InterruptedException {
+
         Map map = new Map();
 
-        map.startFeux();
-
-        Vehicule v1 = new Vehicule(map.getRoute(13).getLastMaillon(), 2000, "v1");
-        Vehicule v2 = new Vehicule(map.getRoute(18).getFirstMaillon(), 2000, "v2");
+        Vehicule v1 = new Vehicule(map.getRouteAleatoire().getLastMaillon(), 2000, "Peugeot");
+        Vehicule v2 = new Vehicule(map.getRouteAleatoire().getFirstMaillon(), 2000, "Citroen");
 
         Scanner sc = new Scanner(System.in);
 
@@ -27,6 +26,7 @@ public class Main {
 
         v1.join();
         v2.join();
+
         map.stopFeux();
     }
 }
