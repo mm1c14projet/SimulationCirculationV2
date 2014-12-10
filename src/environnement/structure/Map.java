@@ -5,11 +5,11 @@ package environnement.structure;
  */
 
 import environnement.maillon.Maillon;
+import environnement.signalisation.AFactoryFeu;
+import environnement.signalisation.FactoryFeu;
 import environnement.signalisation.FeuCarrefourBiDirectionnel;
 import environnement.signalisation.FeuCarrefourTriDirectionnel;
-import environnement.structure.carrefour.CarrefourBiDirectionnel;
-import environnement.structure.carrefour.CarrefourTriDirectionnel;
-import environnement.structure.carrefour.CarrefourUniDirectionnel;
+import environnement.structure.carrefour.*;
 
 import java.util.Random;
 
@@ -48,6 +48,7 @@ public class Map {
     private CarrefourTriDirectionnel[] t = new CarrefourTriDirectionnel[NB_CARREFOUR_TRIDIR];
 
     private FeuCarrefourBiDirectionnel[] fb = new FeuCarrefourBiDirectionnel[NB_FEUX_TROIESVOIES];
+
     private FeuCarrefourTriDirectionnel[] ft = new FeuCarrefourTriDirectionnel[NB_FEUX_QUATREVOIES];
 
     public Map() {
@@ -88,10 +89,13 @@ public class Map {
 
     public void creationFeux()
     {
-        ft[0] = new FeuCarrefourTriDirectionnel(t[0], 10000);
-
-        fb[0] = new FeuCarrefourBiDirectionnel(b[1], 10000);
-        fb[1] = new FeuCarrefourBiDirectionnel(b[2], 10000);
+        AFactoryFeu factoryFeu = FactoryFeu.getInstance();
+        //ft[0] = new FeuCarrefourTriDirectionnel(t[0], 10000);
+        ft[0] = factoryFeu.createFeuTriDirectionnel(t[0], 10000);
+        //fb[0] = new FeuCarrefourBiDirectionnel(b[1], 10000);
+        fb[0] = factoryFeu.createFeuBiDirectionnel(b[1], 10000);
+        //fb[1] = new FeuCarrefourBiDirectionnel(b[2], 10000);
+        fb[1] = factoryFeu.createFeuBiDirectionnel(b[2], 10000);
     }
 
     public Route getRoute(int n) {
