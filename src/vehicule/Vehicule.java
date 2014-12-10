@@ -91,6 +91,6 @@ public class Vehicule extends Thread {
     }
 
     public int getVitesse() {
-         return vitesse;
+        return vitesse;
     }
 }
