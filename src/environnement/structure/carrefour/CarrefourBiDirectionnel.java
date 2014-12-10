@@ -35,7 +35,7 @@ public class CarrefourBiDirectionnel {
         maillonIntEntrant = new Maillon(hasFeux, true, "biDir[" + numBiDir + "]:maillonIntEntrant", false);
         maillonIntSortant = new Maillon(hasFeux, true, "biDir[" + numBiDir + "]:maillonIntSortant", false);
 
-        maillonExtEntrant.addNextMaillon(maillonExtSortant);
+         maillonExtEntrant.addNextMaillon(maillonExtSortant);
         maillonExtSortant.addNextMaillon(maillonIntEntrant);
         maillonIntEntrant.addNextMaillon(maillonIntSortant);
         maillonIntSortant.addNextMaillon(maillonExtEntrant);
