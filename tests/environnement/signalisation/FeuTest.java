@@ -45,7 +45,6 @@ public class FeuTest {
         assertFalse(c1.getMaillonExtEntrant().isAccessible());
         assertFalse(c1.getMaillonIntEntrant().isAccessible());
         assertTrue(c1.getMaillonIntSortant().isAccessible());
-
     }
 
     public Feu creationFeu(Maillon m1,int dureeFeu,boolean startAtVert){
