@@ -30,10 +30,10 @@ public class CarrefourBiDirectionnel {
                                    Route routeInterieurEntrante, Route routeInterieurSortante,
                                    Route routePerpEntrante,      Route routePerpSortante,
                                    boolean hasFeux, int numBiDir) {
-        maillonExtEntrant = new Maillon(hasFeux, true, "biDir[" + numBiDir + "]:maillonExtEntrant");
-        maillonExtSortant = new Maillon(hasFeux, true, "biDir[" + numBiDir + "]:maillonExtSortant");
-        maillonIntEntrant = new Maillon(hasFeux, true, "biDir[" + numBiDir + "]:maillonIntEntrant");
-        maillonIntSortant = new Maillon(hasFeux, true, "biDir[" + numBiDir + "]:maillonIntSortant");
+        maillonExtEntrant = new Maillon(hasFeux, true, "biDir[" + numBiDir + "]:maillonExtEntrant", false);
+        maillonExtSortant = new Maillon(hasFeux, true, "biDir[" + numBiDir + "]:maillonExtSortant", false);
+        maillonIntEntrant = new Maillon(hasFeux, true, "biDir[" + numBiDir + "]:maillonIntEntrant", false);
+        maillonIntSortant = new Maillon(hasFeux, true, "biDir[" + numBiDir + "]:maillonIntSortant", false);
 
         maillonExtEntrant.addNextMaillon(maillonExtSortant);
         maillonExtSortant.addNextMaillon(maillonIntEntrant);

@@ -27,10 +27,10 @@ public class CarrefourUniDirectionnel {
     public CarrefourUniDirectionnel(Route routeInterieurEntrante, Route routeInterieurSortante,
                                     Route routeExterieurEntrante, Route routeExterieurSortante,
                                     int numUniDir) {
-        maillonInt = new Maillon(false, true, "carrUniDir[" + numUniDir + "]:maillonInterieur");
-        maillonExt1 = new Maillon(false, true, "carrUniDir[" + numUniDir + "]:maillonExterieur1");
-        maillonExt2 = new Maillon(false, true, "carrUniDir[" + numUniDir + "]:maillonExterieur2");
-        maillonExt3 = new Maillon(false, true, "carrUniDir[" + numUniDir + "]:maillonExterieur3");
+        maillonInt = new Maillon(false, true, "carrUniDir[" + numUniDir + "]:maillonInterieur", false);
+        maillonExt1 = new Maillon(false, true, "carrUniDir[" + numUniDir + "]:maillonExterieur1", false);
+        maillonExt2 = new Maillon(false, true, "carrUniDir[" + numUniDir + "]:maillonExterieur2", false);
+        maillonExt3 = new Maillon(false, true, "carrUniDir[" + numUniDir + "]:maillonExterieur3", false);
 
         routeInterieurEntrante.linkLastMaillon(maillonInt);
         maillonInt.addNextMaillon(routeInterieurSortante.getFirstMaillon());

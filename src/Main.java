@@ -1,4 +1,7 @@
+import environnement.structure.AFactoryRoute;
 import environnement.structure.Map;
+import vehicule.AFactoryVehicule;
+import vehicule.FactoryVehicule;
 import vehicule.Vehicule;
 
 import java.util.Scanner;
@@ -11,8 +14,10 @@ public class Main {
 
         Map map = new Map();
 
-        Vehicule v1 = new Vehicule(map.getRouteAleatoire().getLastMaillon(), 2000, "Peugeot");
-        Vehicule v2 = new Vehicule(map.getRouteAleatoire().getFirstMaillon(), 2000, "Citroen");
+        AFactoryVehicule factoryVehicule = FactoryVehicule.getInstance();
+
+        Vehicule v1 = factoryVehicule.createVehicule(map.getRouteAleatoire().getLastMaillon(), 2000, "Peugeot");
+        Vehicule v2 = factoryVehicule.createVehicule(map.getRouteAleatoire().getFirstMaillon(), 2000, "Citroen");
 
         Scanner sc = new Scanner(System.in);
 

@@ -15,7 +15,14 @@ public class Route {
         maillons = new LinkedList<Maillon>();
 
         for (int i = 0; i < longueur; i++) {
-            maillons.add(new Maillon(false, false, "route[" + numRoute + "]:pos[" + i + "]"));
+
+            if(i == 1)
+            {
+                maillons.add(new Maillon(false, false, "route[" + numRoute + "]:pos[" + i + "]", true));
+            }
+            else {
+                maillons.add(new Maillon(false, false, "route[" + numRoute + "]:pos[" + i + "]", false));
+            }
         }
 
         for (int i = 0; i < longueur - 1; i++) {

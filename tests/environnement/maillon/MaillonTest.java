@@ -20,7 +20,7 @@ public class MaillonTest {
 
     //Creation de l'objet Maillon
     public Maillon createMaillon(boolean hasFeux, boolean isMaillonCarrefour, String identifiant ){
-        Maillon m1=new Maillon(hasFeux,isMaillonCarrefour,identifiant);
+        Maillon m1=new Maillon(hasFeux,isMaillonCarrefour,identifiant, false);
         return m1;
     }
 

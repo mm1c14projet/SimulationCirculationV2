@@ -31,10 +31,10 @@ public class CarrefourTriDirectionnel {
                                     Route routeDownEntrante,  Route routeDownSortante,
                                     Route routeLeftEntrante,  Route routeLeftSortante,
                                     boolean hasFeux, int numTriDir) {
-        maillonHautGauche = new Maillon(hasFeux, true, "triDir[" + numTriDir + "]:maillonHautGauche");
-        maillonHautDroit = new Maillon(hasFeux, true, "triDir[" + numTriDir + "]:maillonHautDroit");
-        maillonBasGauche = new Maillon(hasFeux, true, "triDir[" + numTriDir + "]:maillonBasGauche");
-        maillonBasDroit = new Maillon(hasFeux, true, "triDir[" + numTriDir + "]:maillonBasDroit");
+        maillonHautGauche = new Maillon(hasFeux, true, "triDir[" + numTriDir + "]:maillonHautGauche", false);
+        maillonHautDroit = new Maillon(hasFeux, true, "triDir[" + numTriDir + "]:maillonHautDroit", false);
+        maillonBasGauche = new Maillon(hasFeux, true, "triDir[" + numTriDir + "]:maillonBasGauche", false);
+        maillonBasDroit = new Maillon(hasFeux, true, "triDir[" + numTriDir + "]:maillonBasDroit", false);
 
         maillonHautGauche.addNextMaillon(maillonBasGauche);
         maillonBasGauche.addNextMaillon(maillonBasDroit);

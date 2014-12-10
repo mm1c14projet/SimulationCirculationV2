@@ -31,7 +31,7 @@ public class Feu extends Thread {
     public void run() {
         try {
             while(!isInterrupted()) {
-                System.out.println(toString());
+                /*System.out.println(toString());*/
                 sleep(dureeFeu);
                 changerFeu();
             }

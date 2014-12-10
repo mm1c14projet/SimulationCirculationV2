@@ -1,5 +1,7 @@
 package environnement.maillon;
 
+import vehicule.Vehicule;
+
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -9,14 +11,17 @@ import java.util.Random;
 public class Maillon {
     private boolean isEmpty;
     private final boolean hasFeux;
+    private final boolean hasStationEssence;
     private boolean isAccessible;
     private boolean isMaillonCarrefour;
     private ArrayList<Maillon> nextMaillons;
     private String identifiant;  // Pour la représentation
 
-    public Maillon(boolean hasFeux, boolean isMaillonCarrefour, String identifiant) {
+    public Maillon(boolean hasFeux, boolean isMaillonCarrefour, String identifiant, boolean hasStationEssence) {
+        hasStationEssence = isMaillonCarrefour;
         isEmpty = true;
         this.hasFeux = hasFeux;
+        this.hasStationEssence = hasStationEssence;
         isAccessible = true;
         this.isMaillonCarrefour = isMaillonCarrefour;
         nextMaillons = new ArrayList<Maillon>();
@@ -52,20 +57,39 @@ public class Maillon {
         vehiculeIn();
     }
 
-    public synchronized void attenteMaillonLibreEtAccessible() {
+    public synchronized void attenteMaillonLibreEtAccessible(Vehicule vehicule) {
         while(!isEmpty || !isAccessible) {
-            try {
-                wait();
-            } catch (InterruptedException e) {
 
+            if(!isAccessible) {
+                System.out.println("" + vehicule.getIdentifiant() + " bloqué au feu rouge " + vehicule.getPosition().getIdentifiant());
+
+                try {
+                    wait();
+                }catch (InterruptedException e)
+                {
+                    System.out.println(e);
+                }
+
+                System.out.println("Feu vert vehicule : "+vehicule.getIdentifiant()+" repart");
             }
+            else {
+                try {
+                    wait();
+                } catch (InterruptedException e) {
+                    System.out.println(e);
+                }
+            }
+
         }
+
         vehiculeIn();
     }
 
     public boolean hasFeux() {
         return hasFeux;
     }
+
+    public boolean hasStationEssence(){ return hasStationEssence;}
 
     public boolean isEmpty() {
         return isEmpty;
